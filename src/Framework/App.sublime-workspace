@@ -1,0 +1,245 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 372.0,
+		"last_filter": "Package Control: ",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"install Package Control",
+				"Install Package Control"
+			],
+			[
+				"ins",
+				"Install Package Control"
+			]
+		],
+		"width": 485.0
+	},
+	"console":
+	{
+		"height": 282.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
+			"install",
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
+			"reloading settings Packages/User/Package Control.sublime-settings",
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
+			"reloading settings Packages/User/Package Control.sublime-settings"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/sophie/rest_api/src/AppBundle/Controller/essai.php",
+		"/home/sophie/facebo.fr/src/Ecommerce/EcommerceBundle/Form/RechercheType.php",
+		"/home/sophie/facebo.fr/src/Ecommerce/EcommerceBundle/Resources/config/routing.yml",
+		"/home/sophie/facebo.fr/src/Ecommerce/EcommerceBundle/Controller/ProduitsController.php",
+		"/home/sophie/facebo.fr/src/Ecommerce/EcommerceBundle/Resources/views/Default/recherche/modulesUsed/recherche.html.twig",
+		"/home/sophie/facebo.fr/src/Ecommerce/EcommerceBundle/Repository/ProduitsRepository.php",
+		"/home/sophie/monsite25.fr/app/AppKernel.php",
+		"/home/sophie/monsite25.fr/src/AppBundle/Controller/DefaultController.php",
+		"/home/sophie/monsite25.fr/var/cache/dev/appDevDebugProjectContainer.php",
+		"/home/sophie/monsite25.fr/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Controller/AbstractController.php",
+		"/home/sophie/monsite25.fr/Web/app.php",
+		"/home/sophie/monsite25.fr/vendor/doctrine/orm/lib/Doctrine/ORM/Query/Filter/SQLFilter.php",
+		"/home/sophie/facebo.fr/src/AppBundle/Entity/User.php",
+		"/home/sophie/facebo.fr/app/Resources/views/base.html.twig",
+		"/home/sophie/facebo.fr/app/config/security.yml",
+		"/home/sophie/facebo.fr/src/AppBundle/Doctrine/HashPasswordListener.php",
+		"/home/sophie/facebo.fr/src/AppBundle/DataFixtures/ORM/LoadFixtures.php",
+		"/home/sophie/facebo.fr/src/AppBundle/DataFixtures/ORM/fixtures.yml",
+		"/home/sophie/facebo.fr/app/config/services.yml",
+		"/home/sophie/facebo.fr/src/AppBundle/Security/LoginFormAuthenticator.php",
+		"/home/sophie/facebo.fr/src/AppBundle/Controller/SecurityController.php",
+		"/home/sophie/facebo.fr/vendor/symfony/symfony/src/Symfony/Component/Security/Http/Authentication/AuthenticationUtils.php",
+		"/home/sophie/frame/src/AppBundle/Entity/Programmer.php",
+		"/home/sophie/frame/src/AppBundle/Controller/Api/ProgrammerController.php",
+		"/home/sophie/from.fr/app/views/pages/homepag.twig",
+		"/home/sophie/from.fr/app/Controllers/PagesController.php",
+		"/home/sophie/from.fr/public/index.php",
+		"/home/sophie/from.fr/app/views/layout.twig",
+		"/home/sophie/monsite25.fr/vendor/symfony/security/Core/User/UserInterface.php",
+		"/home/sophie/monsite25.fr/vendor/symfony/security/Core/Security.php",
+		"/home/sophie/monsite25.fr/vendor/symfony/security/Core/Authentication/Token/AbstractToken.php",
+		"/home/sophie/monsite25.fr/vendor/symfony/security/Core/Authentication/Token/TokenInterface.php",
+		"/home/sophie/tuto25/web/index.php",
+		"/home/sophie/tuto25/Jml/Framework/Controller/FrontController.php",
+		"/home/sophie/tuto25/Jml/Framework/HttpFoundation/Request.php",
+		"/home/sophie/tuto25/Jml/MiniJournal/Article/ArticleController.php",
+		"/home/sophie/tuto25/Jml/MiniJournal/Router/Router.php",
+		"/home/sophie/raspi/mvc/Model.php",
+		"/home/sophie/raspi/controllers/users.php",
+		"/home/sophie/raspi/controllers/connect.php",
+		"/home/sophie/raspi/mvc/conn_bdd.php",
+		"/home/sophie/raspi/controllers/internalIncs.php",
+		"/home/sophie/raspi/templates/internalIncs/footer.php",
+		"/home/sophie/raspi/templates/internalIncs/head.php",
+		"/home/sophie/raspi/controllers/contacts.php",
+		"/home/sophie/raspi/controllers/settings.php",
+		"/home/sophie/raspi/index.php",
+		"/home/sophie/raspi/mvc/Router.php",
+		"/home/sophie/tuto/App/Backend/Modules/News/Views/Medias.php",
+		"/home/sophie/tuto/lib/OCFram/Application.php",
+		"/home/sophie/frame/web/index.php",
+		"/home/sophie/www/index.php",
+		"/home/sophie/www/model/DataBase.php",
+		"/home/sophie/www/mvc/Router.php",
+		"/home/sophie/www/templates/internalIncs/footer.php",
+		"/home/sophie/www/controllers/connect.php",
+		"/home/sophie/www/mvc/constants.php",
+		"/home/sophie/www/mvc/Model.php",
+		"/home/sophie/www/descartes/load-environment.php",
+		"/home/sophie/monsite/App/Frontend/Config/routes.xml",
+		"/home/sophie/monsite/App/Backend/Config/app.xml",
+		"/home/sophie/monsite/Web/bootstrap.php"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"SHOW TABLES"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 40.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "App.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 282.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
