@@ -8,16 +8,18 @@
     ],
     "autoload": {
         "psr-4": {
-            "Framework\\": "src/Framework"
-            
+            "Framework\\": "src/Framework",
+            "App\\": "src",
+            "Tests\\": "tests"
         }
-    }, 
+    },
     "require": {
         "guzzlehttp/psr7": "^1.4",
         "http-interop/response-sender": "^1.0",
-        "squizlabs/php_codesniffer": "*"
+        "zendframework/zend-expressive-fastroute": "^3.0"
     },
     "require-dev": {
+        "squizlabs/php_codesniffer": "*",
         "phpunit/phpunit": "^7.2"
     }
 }
