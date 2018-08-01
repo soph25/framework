@@ -1,0 +1,41 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 22px;
+    line-height: 1.42857143;
+    
+    height: auto;
+}
+div.container {
+ 
+  height: auto;
+  background-color: black;
+}
+div.row {
+  height: 900px;
+  background-color: lightgrey;
+}
+img{
+ padding:15px;
+ 
+ 
+ display:block;
+ margin-bottom: 15px;
+}
+
+.sep{
+
+line-height:150px;
+
+background-color: #bca95c;
+
+
+border-bottom:20px solid #bca95c;
+
+}
+div.message{
+  background-color: whiteSmoke;
+  min-height: 100px;
+  max-height: 400px;
+  margin-right: 10px; 
+  overflow: auto;
+}

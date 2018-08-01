@@ -4,60 +4,67 @@ namespace Tests\Framework;
 use App\Blog\BlogModule;
 use Framework\App;
 use GuzzleHttp\Psr7\ServerRequest;
+use Framework\Middleware\RouterMiddleware;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Tests\Framework\Modules\ErroredModule;
 use Tests\Framework\Modules\StringModule;
+use Psr\Http\Message\ServerRequestInterface;
 
 class AppTest extends TestCase {
 
-    public function testRedirectTrailingSlash() {
-        $app = new App();
-        $request = new ServerRequest('GET', '/demoslash/');
-        $response = $app->run($request);
-        $this->assertContains('/demoslash', $response->getHeader('Location'));
-        $this->assertEquals(301, $response->getStatusCode());
+    private $app;
+
+    public function setUp()
+    {
+        $this->app = new App();
     }
 
-    public function testBlog() {
-        $app = new App([
-            BlogModule::class
-        ]);
-        $request = new ServerRequest('GET', '/blog');
-        $response = $app->run($request);
-        $this->assertContains('<h1>Bienvenue sur le blog</h1>', (string)$response->getBody());
-        $this->assertEquals(200, $response->getStatusCode());
-
-        $requestSingle = new ServerRequest('GET', '/blog/article-de-test');
-        $responseSingle = $app->run($requestSingle);
-        $this->assertContains('<h1>Bienvenue sur l\'article article-de-test</h1>', (string)$responseSingle->getBody());
+    
+    
+    public function testApp()
+    {
+        $this->app->addModule(get_class($this));
+        $this->assertEquals([get_class($this)], $this->app->getModules());
     }
 
-    public function testThrowExceptionIfNoResponseSent () {
-        $app = new App([
-            ErroredModule::class
-        ]);
-        $request = new ServerRequest('GET', '/demo');
-        $this->expectException(\Exception::class);
-        $app->run($request);
+    public function testAppWithArrayDefinition()
+    {
+        $app = new App(['a' => 2]);
+        $this->assertEquals(2, $app->getContainer()->get('a'));
     }
 
-    public function testConvertStringToResponse () {
-        $app = new App([
-            StringModule::class
-        ]);
-        $request = new ServerRequest('GET', '/demo');
-        $response = $app->run($request);
-        $this->assertInstanceOf(ResponseInterface::class, $response);
-        $this->assertEquals('DEMO', (string)$response->getBody());
+    public function testPipe()
+    {
+        $middleware = $this->getMockBuilder(MiddlewareInterface::class)->getMock();
+        $middleware2 = $this->getMockBuilder(MiddlewareInterface::class)->getMock();
+        $response = $this->getMockBuilder(ResponseInterface::class)->getMock();
+        $request = $this->getMockBuilder(ServerRequestInterface::class)->getMock();
+        $middleware->expects($this->once())->method('process')->willReturn($response);
+        $middleware2->expects($this->never())->method('process')->willReturn($response);
+        $this->assertEquals($response, $this->app->pipe($middleware)->run($request));
     }
 
-    public function testError404() {
-        $app = new App();
-        $request = new ServerRequest('GET', '/aze');
-        $response = $app->run($request);
-        $this->assertContains('<h1>Erreur 404</h1>', (string)$response->getBody());
-        $this->assertEquals(404, $response->getStatusCode());
+    public function testPipeWithClosure()
+    {
+        $middleware = $this->getMockBuilder(MiddlewareInterface::class)->getMock();
+        $response = $this->getMockBuilder(ResponseInterface::class)->getMock();
+        $request = $this->getMockBuilder(ServerRequestInterface::class)->getMock();
+        $middleware->expects($this->once())->method('process')->willReturn($response);
+        $this->app
+            ->pipe(function ($request, $next) {
+                return $next($request);
+            })
+            ->pipe($middleware);
+        $this->assertEquals($response, $this->app->run($request));
     }
+
+    
+
+    
+
+    
 
 }

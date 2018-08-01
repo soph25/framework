@@ -6,16 +6,19 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+
 class MiddlewareApp implements MiddlewareInterface
 {
-
+    private $call;
     /**
      * @var callable
      */
-    private $callback;
+    private $callback = [];
 
-    public function __construct(callable $callback)
+    public function __construct($callback)
     {
+        
+        
         $this->callback = $callback;
     }
 
@@ -26,14 +29,18 @@ class MiddlewareApp implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler = null): ResponseInterface
     {
-        return $this->process($request, $handler);
+
+        return call_user_func_array($this->call, [$request, [$this, 'process']]);
+        
     }
+
 
     /**
      * @return callable
      */
-    public function getCallback(): callable
+    public function getCallback()
     {
         return $this->callback;
     }
+     
 }
