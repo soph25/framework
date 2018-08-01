@@ -7,6 +7,7 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use SplQueue;
 use Framework\MiddlewarePipeInterface;
+
 /**
  * Pipe middleware like unix pipes.
  *
@@ -79,11 +80,10 @@ final class MiddlewarePipe implements MiddlewarePipeInterface
     {
         
         $nextHandler = clone $this;
-        $middleware = $nextHandler->pipeline->dequeue(); 
+        $middleware = $nextHandler->pipeline->dequeue();
 
         
         return $middleware->__invoke($request, $next);
-        
     }
 
     /**

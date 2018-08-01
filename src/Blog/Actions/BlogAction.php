@@ -29,11 +29,10 @@ class BlogAction
     public function __construct(Router $router, RenderInterface $renderer, ContainerInterface $container, PostTable $postTable, Cache $cache)
     {
         $this->renderer = $renderer;
-        $this->router = $router;  
+        $this->router = $router;
         $this->container = $container->get('plates');
         $this->postTable = $postTable;
-        $this->cache = $cache;  
-        
+        $this->cache = $cache;
     }
 
     public function __invoke(Request $request)
@@ -56,8 +55,8 @@ class BlogAction
         $params = $request->getQueryParams();
         $posts = $this->postTable->findPaginated(12, $params['p'] ?? 1);
         //var_dump($this->cache->getCacheDir());
-        //$this->cache->store('_blogindex', $this->container->render('index', ['name' => 'Jonathan', 'router' => $this->router, 'posts' => $posts])); 
-        //return $this->cache->retrieve('_blogindex'); 
+        //$this->cache->store('_blogindex', $this->container->render('index', ['name' => 'Jonathan', 'router' => $this->router, 'posts' => $posts]));
+        //return $this->cache->retrieve('_blogindex');
         return $this->container->render('index', ['name' => 'Jonathan', 'router' => $this->router, 'posts' => $posts]);
     }
 

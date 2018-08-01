@@ -6,7 +6,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-
 class MiddlewareApp implements MiddlewareInterface
 {
     private $call;
@@ -31,7 +30,6 @@ class MiddlewareApp implements MiddlewareInterface
     {
 
         return call_user_func_array($this->call, [$request, [$this, 'process']]);
-        
     }
 
 
@@ -42,5 +40,4 @@ class MiddlewareApp implements MiddlewareInterface
     {
         return $this->callback;
     }
-     
 }

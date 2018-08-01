@@ -1,25 +1,19 @@
 <?php
 namespace Framework\Middleware;
 
-
 class NoException extends \Exception
 {
     public function __construct($message, $code = 0)
+    {
 
-  {
-
-    parent::__construct($message, $code);
-
-  }
+        parent::__construct($message, $code);
+    }
 
   
 
-  public function __toString()
+    public function __toString()
+    {
 
-  {
-
-    return $this->message;
-
-  }
-
+        return $this->message;
+    }
 }

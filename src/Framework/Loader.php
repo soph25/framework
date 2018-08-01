@@ -73,16 +73,15 @@
  */
 
 class Loader
-
 {
 
-  private $_fileExtension = '.php';
+    private $_fileExtension = '.php';
 
-  private $_namespace;
+    private $_namespace;
 
-  private $_includePath;
+    private $_includePath;
 
-  private $_namespaceSeparator = '\\';
+    private $_namespaceSeparator = '\\';
 
 
   /**
@@ -91,40 +90,36 @@ class Loader
 
    * specified namespace.
 
-   * 
+   *
 
    * @param string $ns The namespace to use.
 
    */
 
-  public function __construct($ns = null, $includePath = null)
+    public function __construct($ns = null, $includePath = null)
+    {
 
-  {
+        $this->_namespace = $ns;
 
-    $this->_namespace = $ns;
-
-    $this->_includePath = $includePath;
-
-  }
+        $this->_includePath = $includePath;
+    }
 
 
   /**
 
    * Sets the namespace separator used by classes in the namespace of this class loader.
 
-   * 
+   *
 
    * @param string $sep The separator to use.
 
    */
 
-  public function setNamespaceSeparator($sep)
+    public function setNamespaceSeparator($sep)
+    {
 
-  {
-
-    $this->_namespaceSeparator = $sep;
-
-  }
+        $this->_namespaceSeparator = $sep;
+    }
 
 
   /**
@@ -137,32 +132,28 @@ class Loader
 
    */
 
-  public function getNamespaceSeparator()
+    public function getNamespaceSeparator()
+    {
 
-  {
-
-    return $this->_namespaceSeparator;
-
-  }
+        return $this->_namespaceSeparator;
+    }
 
 
   /**
 
    * Sets the base include path for all class files in the namespace of this class loader.
 
-   * 
+   *
 
    * @param string $includePath
 
    */
 
-  public function setIncludePath($includePath)
+    public function setIncludePath($includePath)
+    {
 
-  {
-
-    $this->_includePath = $includePath;
-
-  }
+        $this->_includePath = $includePath;
+    }
 
 
   /**
@@ -175,32 +166,28 @@ class Loader
 
    */
 
-  public function getIncludePath()
+    public function getIncludePath()
+    {
 
-  {
-
-    return $this->_includePath;
-
-  }
+        return $this->_includePath;
+    }
 
 
   /**
 
    * Sets the file extension of class files in the namespace of this class loader.
 
-   * 
+   *
 
    * @param string $fileExtension
 
    */
 
-  public function setFileExtension($fileExtension)
+    public function setFileExtension($fileExtension)
+    {
 
-  {
-
-    $this->_fileExtension = $fileExtension;
-
-  }
+        $this->_fileExtension = $fileExtension;
+    }
 
 
   /**
@@ -213,13 +200,11 @@ class Loader
 
    */
 
-  public function getFileExtension()
+    public function getFileExtension()
+    {
 
-  {
-
-    return $this->_fileExtension;
-
-  }
+        return $this->_fileExtension;
+    }
 
 
   /**
@@ -228,13 +213,11 @@ class Loader
 
    */
 
-  public function register()
+    public function register()
+    {
 
-  {
-
-    spl_autoload_register(array($this, 'loadClass'));
-
-  }
+        spl_autoload_register(array($this, 'loadClass'));
+    }
 
 
   /**
@@ -243,13 +226,11 @@ class Loader
 
    */
 
-  public function unregister()
+    public function unregister()
+    {
 
-  {
-
-    spl_autoload_unregister(array($this, 'loadClass'));
-
-  }
+        spl_autoload_unregister(array($this, 'loadClass'));
+    }
 
 
   /**
@@ -264,33 +245,26 @@ class Loader
 
    */
 
-  public function loadClass($className)
+    public function loadClass($className)
+    {
 
-  {
+        if (null === $this->_namespace || $this->_namespace.$this->_namespaceSeparator === substr($className, 0, strlen($this->_namespace.$this->_namespaceSeparator))) {
+            $fileName = '';
 
-    if (null === $this->_namespace || $this->_namespace.$this->_namespaceSeparator === substr($className, 0, strlen($this->_namespace.$this->_namespaceSeparator))) {
+            $namespace = '';
 
-      $fileName = '';
+            if (false !== ($lastNsPos = strripos($className, $this->_namespaceSeparator))) {
+                $namespace = substr($className, 0, $lastNsPos);
 
-      $namespace = '';
+                $className = substr($className, $lastNsPos + 1);
 
-      if (false !== ($lastNsPos = strripos($className, $this->_namespaceSeparator))) {
+                $fileName = str_replace($this->_namespaceSeparator, DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
+            }
 
-        $namespace = substr($className, 0, $lastNsPos);
-
-        $className = substr($className, $lastNsPos + 1);
-
-        $fileName = str_replace($this->_namespaceSeparator, DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
-
-      }
-
-      $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . $this->_fileExtension;
+            $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . $this->_fileExtension;
 
 
-      require ($this->_includePath !== null ? $this->_includePath . DIRECTORY_SEPARATOR : '') . $fileName;
-
+            require($this->_includePath !== null ? $this->_includePath . DIRECTORY_SEPARATOR : '') . $fileName;
+        }
     }
-
-  }
-
 }

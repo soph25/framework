@@ -23,14 +23,14 @@ class TimeExtension implements ExtensionInterface
 
     public function ago($datetime, $full = false)
     {
-    $now = new \DateTime;
-    $ago = new \DateTime($datetime);
-    $diff = $now->diff($ago);
+        $now = new \DateTime;
+        $ago = new \DateTime($datetime);
+        $diff = $now->diff($ago);
 
-    $diff->w = floor($diff->d / 7);
-    $diff->d -= $diff->w * 7;
+        $diff->w = floor($diff->d / 7);
+        $diff->d -= $diff->w * 7;
 
-    $string = array(
+        $string = array(
         'y' => 'année',
         'm' => 'moi',
         'w' => 'week',
@@ -38,17 +38,19 @@ class TimeExtension implements ExtensionInterface
         'h' => 'heure',
         'i' => 'minute',
         's' => 'second',
-    );
-    foreach ($string as $k => &$v) {
-        if ($diff->$k) {
-            $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
-        } else {
-            unset($string[$k]);
+        );
+        foreach ($string as $k => &$v) {
+            if ($diff->$k) {
+                $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+            } else {
+                unset($string[$k]);
+            }
         }
-    }
 
-    if (!$full) $string = array_slice($string, 0, 1);
+        if (!$full) {
+            $string = array_slice($string, 0, 1);
+        }
     //return $string ? implode(', ', $string) . '' : 'just now';
-    return 'il y a ' . implode(', ', $string) .  ( implode(', ', $string) > 1 ? '' : '' ) . '  environ';
+        return 'il y a ' . implode(', ', $string) .  ( implode(', ', $string) > 1 ? '' : '' ) . '  environ';
     }
 }

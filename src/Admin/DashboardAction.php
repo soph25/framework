@@ -24,7 +24,6 @@ class DashboardAction
         $this->renderer = $renderer;
         $this->widgets = $widgets;
         $this->container = $container->get('badmin');
-  
     }
 
     public function __invoke()

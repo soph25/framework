@@ -53,13 +53,12 @@ class DatabaseAuth implements Auth
     {
        
         
-            try {
-                $user = $this->userTable->findBy('username', $username);
-                return $user;
-            } catch (NoRecordException $exception) {
-                
-                return null;
-            }
+        try {
+            $user = $this->userTable->findBy('username', $username);
+            return $user;
+        } catch (NoRecordException $exception) {
+            return null;
+        }
         
         return null;
     }

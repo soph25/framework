@@ -53,15 +53,4 @@ class Post
         ['filename' => $filename, 'extension' => $extension] = pathinfo($this->image);
         return '/home/sophie/monp/public/uploads/posts/' . $filename . '_thumb.' . $extension;
     }
-
-
-
-
-
-
-
-
-
-
-
 }

@@ -5,7 +5,7 @@
 <div class="row">
 
  
-    <?php foreach ($posts as $post): ?>
+    <?php foreach ($posts as $post) : ?>
 <div class="column"> 
    
     <div class="card-header">

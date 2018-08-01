@@ -28,7 +28,7 @@ use Framework\Events\EventManager\EventManagerInterface;
  */
 class EventManager implements EventManagerInterface
 {
-     private $listeners = [];
+    private $listeners = [];
 
     /**
      * Attaches a listener to an event
@@ -57,7 +57,7 @@ class EventManager implements EventManagerInterface
     public function detach($event, $callback)
     {
         $this->listeners[$event] = array_filter($this->listeners[$event], function ($listener) use ($callback) {
-           return $listener['callback'] !== $callback;
+            return $listener['callback'] !== $callback;
         });
         return true;
     }
@@ -91,9 +91,9 @@ class EventManager implements EventManagerInterface
         if (isset($this->listeners[$event->getName()])) {
             $listeners = $this->listeners[$event->getName()];
             usort($listeners, function ($listenerA, $listenerB) {
-               return $listenerB['priority'] - $listenerA['priority'];
+                return $listenerB['priority'] - $listenerA['priority'];
             });
-            foreach($listeners as ['callback' => $callback]) {
+            foreach ($listeners as ['callback' => $callback]) {
                 if ($event->isPropagationStopped()) {
                     break;
                 }
@@ -110,5 +110,4 @@ class EventManager implements EventManagerInterface
         $event->setParams($argv);
         return $event;
     }
-
 }

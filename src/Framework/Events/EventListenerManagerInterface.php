@@ -19,6 +19,7 @@ namespace Framework\Events;
 
 use Framework\Events\EventManager\EventInterface;
 use Framework\Events\EventManager\EventManagerInterface;
+
 /**
  * EventListenerManagerInterface
  *

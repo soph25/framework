@@ -27,6 +27,4 @@ trait RouterAwareAction
             ->withStatus(301)
             ->withHeader('location', $redirectUri);
     }
-
-    
 }

@@ -60,8 +60,6 @@ class AccountAction
     public function __invoke(ServerRequestInterface $request)
     {
 
-        return $this->container->render('accountprofile', [ 'user' => $this->auth->getUser() ]);        
-   
-        
+        return $this->container->render('accountprofile', [ 'user' => $this->auth->getUser() ]);
     }
 }

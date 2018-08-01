@@ -15,8 +15,6 @@ use Framework\Database\NoRecordException;
 use Framework\Events\EventManager;
 use App\Auth\Action\OnLoginEvent;
 
-
-
 class LoginAttemptAction
 {
     private $container;
@@ -51,7 +49,6 @@ class LoginAttemptAction
         $this->auth = $auth;
         $this->router = $router;
         $this->session = $session;
-
     }
 
     public function __invoke(ServerRequestInterface $request)
@@ -61,7 +58,7 @@ class LoginAttemptAction
 //$manager->attach('database.auth.login', function ($event) use ($manager){
 //unlink($event->getTarget()->getImage());
 //});
-       try {
+        try {
             $user = $this->auth->login($params['username'], $params['password']);
             //$manager->trigger(new OnLoginEvent($user));
             $path = $this->session->get('auth.redirect') ?: $this->router->generateUri('admin');
@@ -71,11 +68,6 @@ class LoginAttemptAction
         } catch (NoRecordException $exception) {
             (new FlashService($this->session))->error('Identifiant ou mot de passe incorrect');
             return $this->redirect('auth.login');
-        } 
-
-
-        
-
-       
+        }
     }
 }

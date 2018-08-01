@@ -3,8 +3,7 @@ namespace Framework\Middleware;
 
 use Psr\Http\Message\ServerRequestInterface;
 
-
-class MethodMiddleware 
+class MethodMiddleware
 {
 
 
@@ -20,6 +19,4 @@ class MethodMiddleware
         }
         return $next($request);
     }
-
-   
 }

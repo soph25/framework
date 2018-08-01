@@ -13,7 +13,6 @@ use Zend\Expressive\Router\RouteCollector;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 
-
 /**
  * Register and match routes
  */
@@ -24,7 +23,7 @@ class Router
      */
     private $router;
 
-    private $middles = []; 
+    private $middles = [];
 
     public $routes = [];
 
@@ -37,7 +36,6 @@ class Router
         
         $this->router = new FastRouteRouter();
         //$this->collector = new RouteCollector($this->router);
-        
     }
 
     /**
@@ -59,7 +57,6 @@ class Router
     {
 
         return $next($request);
-
     }
     
 
@@ -92,7 +89,6 @@ class Router
         $delete = new ZendRoute($path, new MiddlewareApp($callable), ['DELETE'], $name);
         $this->router->addRoute($delete);
         return $delete;
-         
     }
 
     /**
@@ -122,7 +118,7 @@ class Router
 
    
 
-      public function setContainer(ContainerInterface $container)
+    public function setContainer(ContainerInterface $container)
     {
         
         $this->container = $container;
@@ -139,7 +135,6 @@ class Router
 //echo "yes";
                 
         if ($result->isSuccess()) {
-
             $route =  new Route(
                 $result->getMatchedRouteName(),
                 $result->getMatchedRoute()->getMiddleware()->getCallback(),

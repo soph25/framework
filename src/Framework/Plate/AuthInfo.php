@@ -8,8 +8,6 @@ use App\Auth\Table\UserTable;
 use App\Session\SessionInterface;
 use Slim\Interfaces\RouterInterface;
 
-
-
 class AuthInfo implements ExtensionInterface
 {
     /**
@@ -53,15 +51,15 @@ class AuthInfo implements ExtensionInterface
         }
         // On valide l'utilisateur
         $user = $this->userTable->findByUsername($username);
-        //$message = $_SESSION['slimFlash']; 
+        //$message = $_SESSION['slimFlash'];
         
         if ($user && $user->checkPassword($password)) {
-            //$this->flashy('Vous etes connecté'); 
+            //$this->flashy('Vous etes connecté');
             $this->session->set('auth.user', $user->id);
             $this->session->set('auth.username', $user->username);
             $this->session->set('auth.role', $user->role);
             //$this->session->set('auth.avatar', $user->role);
-            //$this->session->set('slimFlash', $message); 
+            //$this->session->set('slimFlash', $message);
             return $user;
         }
         return null;

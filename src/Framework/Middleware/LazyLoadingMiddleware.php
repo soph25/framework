@@ -19,11 +19,10 @@ class LazyLoadingMiddleware implements MiddlewareInterface
      */
     private $middlewareName;
 
-    public function __construct(MiddlewareContainer $container, string $middlewareName) 
+    public function __construct(MiddlewareContainer $container, string $middlewareName)
     {
         $this->container = $container;
         $this->middlewareName = $middlewareName;
-        
     }
     /**
      * @throws InvalidMiddlewareException for invalid middleware types pulled
@@ -32,19 +31,18 @@ class LazyLoadingMiddleware implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
     {
         $middleware = $this->container->get($this->middlewareName);
-var_dump(call_user_func_array($middleware, [$request, $middleware]));
-       if (is_callable($middleware)) {
+        var_dump(call_user_func_array($middleware, [$request, $middleware]));
+        if (is_callable($middleware)) {
             //var_dump(call_user_func_array($middleware, [$request, $middleware]));
             //die();
-//die();
+ //die();
         }
 
-       return $middleware($request, $handler);
+        return $middleware($request, $handler);
     }
 
     public function getMiddlewareName()
     {
          return $this->middlewareName;
-
-    } 
+    }
 }

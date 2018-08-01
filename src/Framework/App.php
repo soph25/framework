@@ -44,7 +44,7 @@ class App implements MiddlewareInterface, RequestHandlerInterface
     private $factory;
     
 
-    public $router; 
+    public $router;
     /**
      * @var string[]
      */
@@ -56,7 +56,7 @@ class App implements MiddlewareInterface, RequestHandlerInterface
         'PUT',
         'PATCH',
         'DELETE',
-    ]; 
+    ];
     /**
      * @var int
      */
@@ -82,7 +82,6 @@ class App implements MiddlewareInterface, RequestHandlerInterface
     
     public function view(string $some)
     {
-        
     }
 
     
@@ -92,7 +91,7 @@ class App implements MiddlewareInterface, RequestHandlerInterface
      * @param string $middleware
      * @return App
      */
-     public function pipe($routePrefix, $middleware = null): self
+    public function pipe($routePrefix, $middleware = null): self
     {
         if ($middleware === null) {
             $this->middlewares[] = $routePrefix;
@@ -107,9 +106,7 @@ class App implements MiddlewareInterface, RequestHandlerInterface
         $middleware = new CombinedMiddleware($this->getContainer(), $this->middlewares);
 
         return $middleware->handle($request);
-
-        
-    } 
+    }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler = null): ResponseInterface
     {
@@ -120,7 +117,6 @@ class App implements MiddlewareInterface, RequestHandlerInterface
         $middleware = new CombinedMiddleware($this->getContainer(), $this->middlewares);
 
         return $middleware->process($request, $this);
-        
     }
 
 
@@ -161,7 +157,7 @@ class App implements MiddlewareInterface, RequestHandlerInterface
     /**
      * @return object
      */
-     public function getModules(): array
+    public function getModules(): array
     {
         return $this->modules;
     }

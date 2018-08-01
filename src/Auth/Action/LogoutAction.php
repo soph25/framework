@@ -30,7 +30,6 @@ class LogoutAction
         $this->renderer = $renderer;
         $this->auth = $auth;
         $this->flashService = $flashService;
-
     }
 
     public function __invoke(ServerRequestInterface $request)

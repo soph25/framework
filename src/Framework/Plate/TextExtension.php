@@ -4,7 +4,6 @@ namespace Framework\Plate;
 use League\Plates\Engine;
 use League\Plates\Extension\ExtensionInterface;
 
-
 /**
  * Série d'extensions concernant les textes
  *
@@ -13,13 +12,13 @@ use League\Plates\Extension\ExtensionInterface;
 class TextExtension implements ExtensionInterface
 {
 
-     public function register(Engine $engine)
+    public function register(Engine $engine)
     {
         $engine->registerFunction('excerpt', [$this, 'excerpt']);
-        $engine->registerFunction('limit', [$this, 'limit']); 
+        $engine->registerFunction('limit', [$this, 'limit']);
     }
 
-     public function limit(string $content, int $maxLength = 20): string
+    public function limit(string $content, int $maxLength = 20): string
     {
         if (mb_strlen($content) > $maxLength) {
             $excerpt = mb_substr($content, 0, $maxLength);

@@ -15,6 +15,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Container\ContainerInterface;
 use Framework\Actions\RouterAwareAction;
 use Framework\Validator\ValidationError;
+
 class SignupAction
 {
     private $container;
@@ -104,10 +105,5 @@ class SignupAction
                 'email'    => $params['email']
             ]
         ]);
-
-       
     }
-
-        
-    
 }

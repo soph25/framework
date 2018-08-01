@@ -14,7 +14,7 @@ namespace App\Plate;
 /**
  * @author Pablo Díez <pablodip@gmail.com>
  */
-class Template 
+class Template
 {
     protected static $defaultOptions = array();
 

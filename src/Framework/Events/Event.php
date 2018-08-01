@@ -125,7 +125,7 @@ class Event implements EventInterface
      *
      * @param string $name
      */
-    public function setName($name): void 
+    public function setName($name): void
     {
         $this->name = $name;
     }

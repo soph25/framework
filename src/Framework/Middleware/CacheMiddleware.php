@@ -6,7 +6,7 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use GuzzleHttp\Psr7\Response;
 
-class CacheMiddleware implements MiddlewareInterface 
+class CacheMiddleware implements MiddlewareInterface
 {
     protected $config;
 

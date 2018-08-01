@@ -9,10 +9,9 @@ use Framework\Router;
 
 class FantaPager implements ExtensionInterface
 {
-     public function __construct(Router $router)
+    public function __construct(Router $router)
     {
         $this->router = $router;
-        
     }
 
     public function addLink($ref, $url)

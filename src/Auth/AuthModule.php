@@ -26,7 +26,7 @@ class AuthModule extends Module
     public function __construct(ContainerInterface $container, Router $router, RenderInterface $renderer, FlashService $service, DatabaseAuth $data, SessionInterface $session)
     {
         $renderer->addPath('auth', __DIR__ . '/views');
-        $router->get($container->get('auth.login'),  new LoginAction($container, $renderer,$router ,$container), 'auth.login');
+        $router->get($container->get('auth.login'), new LoginAction($container, $renderer, $router, $container), 'auth.login');
         
         $router->post($container->get('auth.login'), new LoginAttemptAction($container, $renderer, $router, $data, $session));
         $router->get('/logout', new LogoutAction($container, $renderer, $data, $service), 'auth.logout');

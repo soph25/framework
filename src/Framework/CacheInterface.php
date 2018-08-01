@@ -1,19 +1,14 @@
 <?php
 namespace Framework;
 
+interface CacheInterface
+{
 
-interface CacheInterface{
-
-       public function get($key);
-
-
-       public function has($key);
+    public function get($key);
 
 
-       public function set($key, $value, $expiration = 600);
+    public function has($key);
 
 
-
-
-
+    public function set($key, $value, $expiration = 600);
 }

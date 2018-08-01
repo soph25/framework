@@ -28,20 +28,20 @@ class BlogModule extends Module
 
     private $routes = [];
 
-    public function __construct(string $path, string $prefix , Router $router, RenderInterface $renderer, ContainerInterface $container,PostTable $table, \Framework\Session\FlashService $flash, Cache $cache, PostUpload $upload)
+    public function __construct(string $path, string $prefix, Router $router, RenderInterface $renderer, ContainerInterface $container, PostTable $table, \Framework\Session\FlashService $flash, Cache $cache, PostUpload $upload)
     {
         //$renderer->addFolder('/home/sophie/monp/src/Blog', __DIR__ . '/views');
         //var_dump($path);
-        //$router->get("/", new HomeAction($renderer, $router), 'blog.home'); 
+        //$router->get("/", new HomeAction($renderer, $router), 'blog.home');
          
-        $pam =  $router->get("/",  new HomeAction($router, $renderer, $container, $cache), 'blog.home');
-        //$pam = $pom->getMiddleware(); 
+        $pam =  $router->get("/", new HomeAction($router, $renderer, $container, $cache), 'blog.home');
+        //$pam = $pom->getMiddleware();
         //var_dump($pam);
         //var_dump($router->match($request));
         $router->get($container->get('blog.prefix'), new BlogAction($router, $renderer, $container, $table, $cache), 'blog.index');
         //$router->get("/admin", new AdminBlogAction($router, $renderer, $container, $table), 'blog.admin');
         //$router->get($prefix, NotFoundMiddleware::class   , new BlogAction($router, $renderer, $container, $table, $cache), [] ,'blog.index');
-        $router->get($prefix . '/{slug:[a-z\-0-9]+}-{id:[0-9]+}', new BlogAction($router, $renderer, $container, $table, $cache),'blog.show');
+        $router->get($prefix . '/{slug:[a-z\-0-9]+}-{id:[0-9]+}', new BlogAction($router, $renderer, $container, $table, $cache), 'blog.show');
         //$router->middleware();
         //if ($container->has('admin.prefix')) {
             //$prefix = $container->get('admin.prefix');
@@ -53,9 +53,5 @@ class BlogModule extends Module
 
     public function getRoutes()
     {
-
-
     }
 }
-
- 

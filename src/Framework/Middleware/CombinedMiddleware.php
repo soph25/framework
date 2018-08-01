@@ -8,7 +8,6 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Container\ContainerInterface;
 
-
 final class CombinedMiddleware implements MiddlewareInterface, RequestHandlerInterface
 {
     private $container;
@@ -26,10 +25,10 @@ final class CombinedMiddleware implements MiddlewareInterface, RequestHandlerInt
         
         
         $this->container = $container;
-        $this->middlewares = $middlewares; 
+        $this->middlewares = $middlewares;
     }
 
-         public function process(ServerRequestInterface $request, RequestHandlerInterface $handler = null): ResponseInterface
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler = null): ResponseInterface
     {
         $middleware = $this->getMiddleware();
 
@@ -40,20 +39,20 @@ final class CombinedMiddleware implements MiddlewareInterface, RequestHandlerInt
             if (is_string($response)) {
                 return new Response(200, [], $response);
             }
-            return $response; 
+            return $response;
         } elseif ($middleware instanceof MiddlewareInterface) {
             return $middleware->process($request, $this);
-        } 
+        }
     }
     /**
      * @param ServerRequestInterface $request
      * @param RequestHandlerInterface|null $handler
      * @return ResponseInterface
      */
-         public function handle(ServerRequestInterface $request): ResponseInterface
-         {
+    public function handle(ServerRequestInterface $request): ResponseInterface
+    {
         
-                $middleware = $this->getMiddleware();
+           $middleware = $this->getMiddleware();
 
         if (is_null($middleware)) {
             return $this->process($request);
@@ -62,32 +61,28 @@ final class CombinedMiddleware implements MiddlewareInterface, RequestHandlerInt
             if (is_string($response)) {
                 return new Response(200, [], $response);
             }
-            return $response; 
+            return $response;
         } elseif ($middleware instanceof MiddlewareInterface) {
             return $middleware->process($request, $this);
-        } 
+        }
+    }
 
-
-         }
-
-         private function getMiddleware()
-         {
-            if (array_key_exists($this->index, $this->middlewares)) {
-                  if (is_string($this->middlewares[$this->index])) {
-                     $middleware = $this->container->get($this->middlewares[$this->index]);
-                 } else {
-                     $middleware = $this->middlewares[$this->index];
-                  }
+    private function getMiddleware()
+    {
+        if (array_key_exists($this->index, $this->middlewares)) {
+            if (is_string($this->middlewares[$this->index])) {
+                $middleware = $this->container->get($this->middlewares[$this->index]);
+            } else {
+                $middleware = $this->middlewares[$this->index];
+            }
                  $this->index++;
                 return $middleware;
-             }
-              return null;
         }
+                return null;
+    }
 
 
     /**
      * @return callable
      */
-    
-     
 }

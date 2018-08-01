@@ -26,5 +26,3 @@ class ChangeCase implements ExtensionInterface
         return strtolower($var);
     }
 }
-
-

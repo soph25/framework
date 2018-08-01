@@ -5,7 +5,8 @@ use Framework\Router;
 use Psr\Http\Message\ServerRequestInterface;
 use Framework\App;
 
-class RouterMiddleware {
+class RouterMiddleware
+{
 
     
     /**
@@ -16,7 +17,6 @@ class RouterMiddleware {
     public function __construct(Router $router)
     {
         $this->router = $router;
-        
     }
 
     public function __invoke(ServerRequestInterface $request, callable $next)
@@ -32,5 +32,4 @@ class RouterMiddleware {
         $request = $request->withAttribute(get_class($route), $route);
         return $next($request);
     }
-
 }

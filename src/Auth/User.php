@@ -28,7 +28,8 @@ class User implements \Framework\Auth\User
         return [];
     }
 
-    public function getImage () {
+    public function getImage()
+    {
         return '/home/sophie/monp/public/demo.jpg';
     }
 }

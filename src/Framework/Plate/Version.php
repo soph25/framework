@@ -8,10 +8,9 @@ use Slim\Interfaces\RouterInterface;
 
 class Version implements ExtensionInterface
 {
-     public function __construct(RouterInterface $router)
+    public function __construct(RouterInterface $router)
     {
         $this->router = $router;
-        
     }
 
     public function addLink($ref, $url)
@@ -22,18 +21,16 @@ class Version implements ExtensionInterface
     public function register(Engine $engine)
     {
         $engine->registerFunction('version', [$this, 'version']);
-        
     }
 
-     public function version($path)
+    public function version($path)
     {
         
-        if(file_exists($file = $_SERVER['DOCUMENT_ROOT'].$path)){
+        if (file_exists($file = $_SERVER['DOCUMENT_ROOT'].$path)) {
               $mtime = filemtime($file);
               $ext = substr($file, strrpos($file, '.'));
-              return str_replace($ext, '-'. hash('md5',$mtime),$path) . $ext;   
+              return str_replace($ext, '-'. hash('md5', $mtime), $path) . $ext;
         }
-        return $path; 
-          
+        return $path;
     }
 }

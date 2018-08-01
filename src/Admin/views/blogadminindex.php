@@ -2,10 +2,10 @@
 
 <h1>Admin</h1>
 
-<?php if($this->getFlash('success')): ?>
+<?php if ($this->getFlash('success')) : ?>
 <div class="alert alert-success">
 
-<?=$this->getFlash('success')?>
+    <?=$this->getFlash('success')?>
 
 </div>
 <?php endif; ?> 
@@ -20,7 +20,7 @@
     <tbody>
 
  
-    <?php foreach ($items as $item): ?>
+    <?php foreach ($items as $item) : ?>
     <tr>
       <td><?= $item->name;?></td>
       <td>

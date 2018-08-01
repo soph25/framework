@@ -13,6 +13,7 @@ use function count;
 use function is_array;
 use function is_callable;
 use function is_string;
+
 /**
  * Marshal middleware for use in the application.
  *
@@ -55,21 +56,20 @@ class MiddlewareFactory
      * @throws Exception\InvalidMiddlewareException if argument is not one of
      *    the specified types.
      */
-    public function prepare($middleware, $path, $router, $container) 
+    public function prepare($middleware, $path, $router, $container)
     {
         if (is_string($middleware)) {
-            
-            $middleware = $this->container->get($this->lazy($middleware)->getMiddlewareName()); 
+            $middleware = $this->container->get($this->lazy($middleware)->getMiddlewareName());
             //return call_user_func_array($middleware, [$request, [$this, 'process']]);
             return $middleware;
-        } 
+        }
         if ($middleware instanceof MiddlewareInterface) {
             return $middleware;
         }
         if ($middleware instanceof RequestHandlerInterface) {
             return $this->handler($middleware);
         }
-        if(is_callable($middleware)) {
+        if (is_callable($middleware)) {
             return call_user_func_array($middleware, [$request, [$this, 'process']]);
         }
         if (is_array($middleware)) {

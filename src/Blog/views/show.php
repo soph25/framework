@@ -10,7 +10,7 @@
  <h1><?= $post->name ;?></h1>
 <?= $post->created_at;?>
 <p class="text-muted"><?=$this->ago($post->created_at)?></p>
-<?php if(isset($post->image)): ?>
+<?php if (isset($post->image)) : ?>
 <img src="<?= $post->getThumb();?>" alt="<?= $post->getImageUrl() ;?>" width="20%">
 
 <?php endif; ?>

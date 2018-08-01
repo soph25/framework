@@ -22,26 +22,26 @@
 </nav>
 
 <div class="container">
-<?php if($this->getFlash('error')): ?>
+<?php if ($this->getFlash('error')) : ?>
 <div class="alert alert-danger">
 
-<?=$this->getFlash('error')?>
+    <?=$this->getFlash('error')?>
 
 </div>
 <?php endif; ?> 
 
 
 
-<?php if($this->getFlash('success')): ?>
+<?php if ($this->getFlash('success')) : ?>
 <div class="alert alert-success">
 
-<?=$this->getFlash('success')?>
+    <?=$this->getFlash('success')?>
 
 </div>
 <?php endif; ?> 
 
 
-  <?=$this->section('content')?>
+    <?=$this->section('content')?>
 
 </div><!-- /.container -->
 

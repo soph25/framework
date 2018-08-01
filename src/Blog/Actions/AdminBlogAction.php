@@ -36,11 +36,11 @@ class AdminBlogAction
     public function __construct(Router $router, RenderInterface $renderer, ContainerInterface $container, PostTable $postTable, \Framework\Session\FlashService $flash, PostUpload $postUpload)
     {
         $this->renderer = $renderer;
-        $this->router = $router;  
+        $this->router = $router;
         $this->container = $container->get('badmin');
         $this->postTable = $postTable;
-        $this->flash = $flash;  
-        $this->postUpload = $postUpload;  
+        $this->flash = $flash;
+        $this->postUpload = $postUpload;
     }
 
     public function __invoke(Request $request)
@@ -84,41 +84,39 @@ class AdminBlogAction
             $paramis = array_merge($request->getParsedBody(), $request->getUploadedFiles());
             $validation = $this->getValidator($request, $paramis);
 
-        if($validation->isValid()) {
-        $image = $this->postUpload->upload($paramis['image'][0], $this->getNewEntity()->image);
-        if ($image) {
-            $paramis['image'] = $image;
-        } else {
-            unset($paramis['image']);
-        }
-        $params = array_filter($paramis, function ($key) {
-            return in_array($key, ['name', 'slug', 'content', 'updated_at', 'image']);
-        }, ARRAY_FILTER_USE_KEY);
+            if ($validation->isValid()) {
+                $image = $this->postUpload->upload($paramis['image'][0], $this->getNewEntity()->image);
+                if ($image) {
+                    $paramis['image'] = $image;
+                } else {
+                    unset($paramis['image']);
+                }
+                $params = array_filter($paramis, function ($key) {
+                    return in_array($key, ['name', 'slug', 'content', 'updated_at', 'image']);
+                }, ARRAY_FILTER_USE_KEY);
 
 
             
-            $this->postTable->update($item->id, $params);
-            $this->flash->success('article bien modifié');
-            return $this->redirect('blog.admin.index');
-        }
-        if($validation->getErrors()) {
+                $this->postTable->update($item->id, $params);
+                $this->flash->success('article bien modifié');
+                return $this->redirect('blog.admin.index');
+            }
+            if ($validation->getErrors()) {
                  $errors = $validation->getErrors();
 
                  //return $this->redirect('blog.admin.create');
                  return $this->container->render('blogadminedit', compact('item', 'errors'));
+            }
         }
-        
-    }
          return $this->container->render('blogadminedit', compact('item'));
+    }
 
-   }
-
-     protected function getNewEntity()
+    protected function getNewEntity()
     {
         $post = new Post();
         $post->created_at = new \DateTime();
         return $post;
-    }  
+    }
      /**
      * Crée un nouvel article
      * @param Request $request
@@ -127,42 +125,39 @@ class AdminBlogAction
     public function create(Request $request)
     {
         if ($request->getMethod() === 'POST') {
-
-
-        $paramis = array_merge($request->getParsedBody(), $request->getUploadedFiles());
+            $paramis = array_merge($request->getParsedBody(), $request->getUploadedFiles());
   
-        $validation = $this->getValidateur($request, $paramis);
+            $validation = $this->getValidateur($request, $paramis);
 
-        if($validation->isValid()) {
-        $image = $this->postUpload->upload($paramis['image'][0], $this->getNewEntity()->image);
-        if ($image) {
-            $paramis['image'] = $image;
-        } else {
-            unset($paramis['image']);
-        }
-        $params = array_filter($paramis, function ($key) {
-            return in_array($key, ['name', 'slug', 'content', 'created_at', 'image']);
-        }, ARRAY_FILTER_USE_KEY);
-
-
+            if ($validation->isValid()) {
+                $image = $this->postUpload->upload($paramis['image'][0], $this->getNewEntity()->image);
+                if ($image) {
+                    $paramis['image'] = $image;
+                } else {
+                    unset($paramis['image']);
+                }
+                $params = array_filter($paramis, function ($key) {
+                    return in_array($key, ['name', 'slug', 'content', 'created_at', 'image']);
+                }, ARRAY_FILTER_USE_KEY);
 
 
-        $this->postTable->insert($params);
-        $this->flash->success('article bien crée');
-        } 
-        if($validation->getErrors()) {
+
+
+                $this->postTable->insert($params);
+                $this->flash->success('article bien crée');
+            }
+            if ($validation->getErrors()) {
                  $errors = $validation->getErrors();
 
                  //return $this->redirect('blog.admin.create');
                  return $this->container->render('blogadmincreate', compact('errors'));
-        }
+            }
 
         //$validation = $this->getValidator($request, $paramis);
 
         
              
              return $this->redirect('blog.admin.index');
-
         }
         //var_dump($this->getValidator($request, $paramis));
 
@@ -173,16 +168,15 @@ class AdminBlogAction
             
         
         return $this->container->render('blogadmincreate', compact('item'));
-        
     }
 
     public function delete(Request $request)
     {
         $manager = new EventManager();
-         $manager->attach('database.post.deleted', function ($event) use ($manager){
+         $manager->attach('database.post.deleted', function ($event) use ($manager) {
              unlink($event->getTarget()->getImage());
              unlink($event->getTarget()->getThumbToDelete());
-        });
+         });
         $post = $this->postTable->find($request->getAttribute('id'));
         $manager->trigger(new OnDeleteEvent($post));
         $this->postTable->delete($request->getAttribute('id'));
@@ -197,22 +191,22 @@ class AdminBlogAction
         }, ARRAY_FILTER_USE_KEY);
     }
 
-     protected function getValidateur(Request $request, array $params)
+    protected function getValidateur(Request $request, array $params)
     {
         $validator = (new Validator($params))
-            ->required('content', 'name', 'slug', 'created_at')
-            ->length('content', 10)
-            ->length('name', 2, 250)
-            ->length('slug', 2, 50)
-            //->exists('category_id', $this->categoryTable->getTable(), $this->categoryTable->getPdo())
-            ->dateTime('created_at')
-            ->extension('image', ['jpg', 'png'])
-            ->slug('slug');
+           ->required('content', 'name', 'slug', 'created_at')
+           ->length('content', 10)
+           ->length('name', 2, 250)
+           ->length('slug', 2, 50)
+           //->exists('category_id', $this->categoryTable->getTable(), $this->categoryTable->getPdo())
+           ->dateTime('created_at')
+           ->extension('image', ['jpg', 'png'])
+           ->slug('slug');
         if (is_null($request->getAttribute('id'))) {
             $validator->uploaded('image');
         }
         return $validator;
-    } 
+    }
 
 
 
@@ -232,5 +226,5 @@ class AdminBlogAction
             $validator->uploaded('image');
         }
         return $validator;
-    } 
+    }
 }

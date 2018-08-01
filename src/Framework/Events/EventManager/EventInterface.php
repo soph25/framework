@@ -5,7 +5,8 @@ namespace Framework\Events\EventManager;
 /**
  * Representation of an event
  */
-interface EventInterface {
+interface EventInterface
+{
 
     /**
      * Get event name

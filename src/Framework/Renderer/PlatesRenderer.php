@@ -20,7 +20,7 @@ class PlatesRenderer implements RenderInterface
 
     private $path;
 
-     public function __construct(Engine $template = null)
+    public function __construct(Engine $template = null)
     {
         if (null === $template) {
             $template = $this->createTemplate();
@@ -38,7 +38,7 @@ class PlatesRenderer implements RenderInterface
         //$template = $templates->make('emails::welcome');
         //$folders = $this->template->getFolders();
         $params = $this->normalizeParams($params);
-        return $this->template->render($name , $params);
+        return $this->template->render($name, $params);
     }
 
     /**
@@ -136,15 +136,18 @@ class PlatesRenderer implements RenderInterface
         return $r->getValue($folders);
     }
 
-    private function hasNamespace(string $view): bool {
+    private function hasNamespace(string $view): bool
+    {
         return $view[0] === '@';
     }
 
-    private function getNamespace(string $view): string {
+    private function getNamespace(string $view): string
+    {
         return substr($view, 1, strpos($view, '/') - 1);
     }
 
-    private function replaceNamespace(string $view): string {
+    private function replaceNamespace(string $view): string
+    {
         $namespace = $this->getNamespace($view);
         return str_replace('@' . $namespace, $this->paths[$namespace], $view);
     }

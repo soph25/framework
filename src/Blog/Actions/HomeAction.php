@@ -38,7 +38,4 @@ class HomeAction
     {
         return $this->container->render('home', ['name' => 'Jonathan', 'router' => $this->router]);
     }
-
-
-    
 }

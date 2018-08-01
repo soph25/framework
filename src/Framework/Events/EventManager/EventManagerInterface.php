@@ -5,7 +5,8 @@ namespace Framework\Events\EventManager;
 /**
  * Interface for EventManager
  */
-interface EventManagerInterface {
+interface EventManagerInterface
+{
 
     /**
      * Attaches a listener to an event

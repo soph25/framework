@@ -49,9 +49,9 @@ class MiddlewareContainer implements ContainerInterface
      * @throws Exception\InvalidMiddlewareException if the service is not
      *     an instance of MiddlewareInterface.
      */
-    public function get($service) 
+    public function get($service)
     {
-       if (! $this->has($service)) {
+        if (! $this->has($service)) {
             throw Exception\MissingDependencyException::forMiddlewareService($service);
         }
         $middleware = $this->container->has($service)

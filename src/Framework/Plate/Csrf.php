@@ -5,8 +5,7 @@ use League\Plates\Engine;
 use League\Plates\Extension\ExtensionInterface;
 use Framework\Middleware\CsrfMiddleware;
 
-
-class Csrf  implements ExtensionInterface
+class Csrf implements ExtensionInterface
 {
     /**
      * @var CsrfMiddleware
@@ -19,10 +18,9 @@ class Csrf  implements ExtensionInterface
         $this->csrfMiddleware = $csrfMiddleware;
     }
 
-     public function register(Engine $engine)
+    public function register(Engine $engine)
     {
         $engine->registerFunction('csrf_input', [$this, 'csrf_input']);
-        
     }
 
     public function csrf_input()
