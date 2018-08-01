@@ -2,3 +2,4 @@
 vendor
 composer.lock
 .phpintel
+monsupersite.sqlite3
