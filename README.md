@@ -14,7 +14,12 @@ Psr\Http\Server\MiddlewareInterface;
 Psr\Http\Server\RequestHandlerInterface;
 
 ces interfaces sont la base des middlewares qui assurent la mise en marche, le dispatching, le routing
-et toutes les autres fonctions que l'on peut ajouter , comme l'authentification... etc   
+et toutes les autres fonctions que l'on peut ajouter , comme l'authentification... etc  
+
+
+ 
+
+Injection de dépendances : "php-di/php-di": "^5.4"
 
 
 ROUTER : "zendframework/zend-expressive-fastroute": "^3.0"
